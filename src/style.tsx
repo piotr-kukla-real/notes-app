@@ -16,6 +16,20 @@ const GlobalStyle = createGlobalStyle`
     background: var(--bg-app);
     word-wrap: break-word;
   }
+
+  .media-px {
+    padding-left: 24px;
+    padding-right: 24px;
+
+    ${({ theme }) => theme.breakpoints.down('xs')} {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+  }
+
+  .no-shrink {
+    flex-shrink: 0;
+  }
 `;
 
 export default GlobalStyle;
