@@ -3,7 +3,7 @@ import { Logo, LogoWrapper, PageName, StyledHeader } from './HeaderElements';
 
 const Header: React.FC = () => (
   <StyledHeader className="media-px">
-    <LogoWrapper>
+    <LogoWrapper className="f-wrap">
       <PageName variant="h3" component="h1">
         Notes
       </PageName>

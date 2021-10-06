@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
     word-wrap: break-word;
   }
 
+  a {
+    color: inherit;
+  }
+
   .media-px {
     padding-left: 24px;
     padding-right: 24px;
@@ -29,6 +33,10 @@ const GlobalStyle = createGlobalStyle`
 
   .no-shrink {
     flex-shrink: 0;
+  }
+
+  .f-wrap {
+    flex-wrap: wrap;
   }
 `;
 

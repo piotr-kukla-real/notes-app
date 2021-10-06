@@ -22,7 +22,6 @@ export const LogoWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
   max-width: 100%;
 `;
 
