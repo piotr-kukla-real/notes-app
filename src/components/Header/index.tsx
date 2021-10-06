@@ -1,3 +1,4 @@
+import Search from 'components/Search';
 import { Logo, LogoWrapper, PageName, StyledHeader } from './HeaderElements';
 
 const Header: React.FC = () => (
@@ -8,6 +9,7 @@ const Header: React.FC = () => (
       </PageName>
       <Logo className="no-shrink" />
     </LogoWrapper>
+    <Search />
   </StyledHeader>
 );
 

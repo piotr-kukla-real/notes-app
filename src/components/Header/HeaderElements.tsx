@@ -9,6 +9,12 @@ export const StyledHeader = styled.header`
   gap: 20px;
   background: ${({ theme }) => theme.palette.primary.main};
   padding: 10px;
+  border-radius: 0 0 5px 5px;
+
+  ${({ theme }) => theme.breakpoints.down('sm')} {
+    flex-direction: column;
+    padding-bottom: 16px;
+  }
 `;
 
 export const LogoWrapper = styled.div`
@@ -17,7 +23,7 @@ export const LogoWrapper = styled.div`
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  min-width: 1px;
+  max-width: 100%;
 `;
 
 interface IPageName extends TypographyProps {
@@ -25,7 +31,7 @@ interface IPageName extends TypographyProps {
 }
 
 export const PageName = styled(Typography)<IPageName>`
-  min-width: 1px;
+  max-width: 100%;
 `;
 
 export const Logo = styled(GiNotebook)`
