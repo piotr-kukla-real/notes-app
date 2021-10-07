@@ -7,6 +7,10 @@ const muiTheme = createTheme({
       color: 'secondary',
       size: 'small',
     },
+    MuiFab: {
+      color: 'secondary',
+      size: 'medium',
+    },
   },
   palette: {
     primary: {

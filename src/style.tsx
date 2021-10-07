@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   :root {
     --bg-app: hsl(198, 20%, 66%);
+    --inset-shadow-1: inset 0 0 4px hsla(0, 0%, 0%, 0.3);
   }
 
   * {
@@ -15,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Arial, Helvetica, sans-serif;
     background: var(--bg-app);
     word-wrap: break-word;
+    overflow-y: scroll;
   }
 
   a {

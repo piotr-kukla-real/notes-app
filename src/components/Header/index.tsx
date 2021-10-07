@@ -1,3 +1,4 @@
+import AddNoteBtn from 'components/AddNoteBtn';
 import Search from 'components/Search';
 import { Logo, LogoWrapper, PageName, StyledHeader } from './HeaderElements';
 
@@ -10,6 +11,7 @@ const Header: React.FC = () => (
       <Logo className="no-shrink" />
     </LogoWrapper>
     <Search />
+    <AddNoteBtn />
   </StyledHeader>
 );
 

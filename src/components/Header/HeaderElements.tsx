@@ -10,6 +10,10 @@ export const StyledHeader = styled.header`
   background: ${({ theme }) => theme.palette.primary.main};
   padding: 10px;
   border-radius: 0 0 5px 5px;
+  position: sticky;
+  top: 0px;
+  box-shadow: var(--inset-shadow-1);
+  z-index: 9;
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
     flex-direction: column;

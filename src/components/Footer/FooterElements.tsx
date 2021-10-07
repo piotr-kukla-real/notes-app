@@ -8,6 +8,8 @@ export const StyledFooter = styled.footer`
   background: ${({ theme }) => theme.palette.primary.main};
   padding: 10px;
   gap: 15px 30px;
+  border-radius: 5px 5px 0 0;
+  box-shadow: var(--inset-shadow-1);
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
     flex-direction: column;
