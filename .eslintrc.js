@@ -15,6 +15,11 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 0,
+    // JS
+    'no-shadow': 0,
+    // TS
+    '@typescript-eslint/no-shadow': 2,
+    '@typescript-eslint/no-redeclare': 0,
   },
   settings: {
     'import/resolver': {
