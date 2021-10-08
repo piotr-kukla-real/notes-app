@@ -1,3 +1,4 @@
+import AddNoteForm from 'components/AddNoteForm';
 import { GrClose } from 'react-icons/gr';
 import {
   AddNoteWrapper,
@@ -15,9 +16,6 @@ const AddNoteDialog: React.FC<propTypes['AddNoteDialog']> = ({
   setOpen,
 }) => {
   const handleClose: handleClose = (e, reason) => {
-    if (reason === 'escapeKeyDown') {
-      setOpen(false);
-    }
     if (reason === 'backdropClick') {
       return;
     }
@@ -30,6 +28,7 @@ const AddNoteDialog: React.FC<propTypes['AddNoteDialog']> = ({
         <CloseBtn onClick={handleClose}>
           <GrClose />
         </CloseBtn>
+        <AddNoteForm />
       </AddNoteWrapper>
     </StyledDialog>
   );
