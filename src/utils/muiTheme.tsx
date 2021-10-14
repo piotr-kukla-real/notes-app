@@ -19,6 +19,9 @@ const muiTheme = createTheme({
     secondary: {
       main: 'hsl(202, 100%, 50%)',
     },
+    error: {
+      main: 'hsl(4, 74%, 55%)',
+    },
   },
   typography: {
     fontFamily: 'Arial, Helvetica, sans-serif',

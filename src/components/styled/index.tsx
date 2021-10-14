@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Container } from '@material-ui/core';
+import { Container, Snackbar } from '@material-ui/core';
 
 export const StyledContainer = styled(Container)`
   display: flex;
@@ -9,4 +9,20 @@ export const StyledContainer = styled(Container)`
 
 export const Main = styled.main`
   flex-grow: 1;
+`;
+
+export const StyledSnackbar = styled(Snackbar)`
+  left: 50%;
+  right: auto;
+  top: 10px;
+  bottom: auto;
+  transform: translateX(-50%);
+  max-width: 100%;
+
+  ${({ theme }) => theme.breakpoints.down('xs')} {
+    left: 8px;
+    right: 8px;
+    top: 10px;
+    transform: none;
+  }
 `;

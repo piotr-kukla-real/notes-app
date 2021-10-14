@@ -3,8 +3,8 @@ import { Dialog, IconButton } from '@material-ui/core';
 
 export const StyledDialog = styled(Dialog)`
   .MuiPaper-root {
-    width: calc(100% - 30px);
-    max-height: calc(100% - 30px);
+    width: calc(100%);
+    max-height: calc(100%);
     margin: 0px;
   }
 `;

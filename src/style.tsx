@@ -4,6 +4,9 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --bg-app: hsl(198, 20%, 66%);
     --inset-shadow-1: inset 0 0 4px hsla(0, 0%, 0%, 0.3);
+    --notify-shadow: 0 0 4px hsla(0, 0%, 0%, 0.5);
+    --light-text: hsl(0, 0%, 84%);
+    --dark-text: hsl(0, 0%, 10%);
   }
 
   * {
