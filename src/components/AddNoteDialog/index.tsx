@@ -6,15 +6,17 @@ import {
   StyledDialog,
 } from './AddNoteDialogElements';
 
+interface AddNoteDialog {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 type handleClose = (
   e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   reason?: 'backdropClick' | 'escapeKeyDown',
 ) => void;
 
-const AddNoteDialog: React.FC<propTypes['AddNoteDialog']> = ({
-  open,
-  setOpen,
-}) => {
+const AddNoteDialog: React.FC<AddNoteDialog> = ({ open, setOpen }) => {
   const handleClose: handleClose = (e, reason) => {
     if (reason === 'backdropClick') {
       return;

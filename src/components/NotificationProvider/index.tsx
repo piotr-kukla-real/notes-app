@@ -81,7 +81,7 @@ const NotificationProvider: React.FC = ({ children }) => {
 
     const { message, color, icon } = defOptions;
 
-    setCurrentNotify({ message, color, icon, key: new Date().getTime() });
+    setCurrentNotify({ message, color, icon, key: Date.now() });
   };
 
   const handleClose = (

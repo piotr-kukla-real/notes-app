@@ -9,6 +9,12 @@ export const StyledContainer = styled(Container)`
 
 export const Main = styled.main`
   flex-grow: 1;
+  padding: 90px 36px 60px;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 `;
 
 export const StyledSnackbar = styled(Snackbar)`

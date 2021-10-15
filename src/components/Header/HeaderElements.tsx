@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { GiNotebook } from 'react-icons/gi';
-import { Typography, TypographyProps } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -29,11 +29,7 @@ export const LogoWrapper = styled.div`
   max-width: 100%;
 `;
 
-interface IPageName extends TypographyProps {
-  component?: string;
-}
-
-export const PageName = styled(Typography)<IPageName>`
+export const PageName = styled(Typography)`
   max-width: 100%;
 `;
 

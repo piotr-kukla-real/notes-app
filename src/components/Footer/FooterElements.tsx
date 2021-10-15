@@ -38,14 +38,24 @@ export const LeftColItem = styled(Typography)`
 `;
 
 export const FooterLink = styled.a`
-  transition: color 0.3s;
+  outline: none;
+  transition: color 0.3s, box-shadow 0.3s;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  padding: 3px;
 
   &:hover {
     color: ${({ theme }) => theme.palette.secondary.dark};
   }
 
+  &:focus-visible {
+    color: ${({ theme }) => theme.palette.secondary.dark};
+    box-shadow: 0 0 0px 2px ${({ theme }) => theme.palette.secondary.dark};
+  }
+
   svg {
-    width: 35px;
-    height: 35px;
+    width: 100%;
+    height: 100%;
   }
 `;

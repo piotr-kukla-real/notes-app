@@ -26,6 +26,10 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
   }
 
+  ul {
+    list-style: none;
+  }
+
   .media-px {
     padding-left: 24px;
     padding-right: 24px;
@@ -42,6 +46,10 @@ const GlobalStyle = createGlobalStyle`
 
   .f-wrap {
     flex-wrap: wrap;
+  }
+
+  .card-item-p {
+    padding: 5px 10px;
   }
 `;
 

@@ -25,6 +25,12 @@ const muiTheme = createTheme({
   },
   typography: {
     fontFamily: 'Arial, Helvetica, sans-serif',
+    h1: {
+      fontSize: '3rem',
+    },
+    h3: {
+      fontSize: '1.3rem',
+    },
   },
   breakpoints: {
     values: {
