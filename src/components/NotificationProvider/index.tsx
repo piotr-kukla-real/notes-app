@@ -5,18 +5,7 @@ import { BiTrash } from 'react-icons/bi';
 import { StyledSnackbar } from 'components/styled';
 import Alert from 'components/Alert';
 
-type colorNames = 'dark' | 'error';
-
-interface colorType {
-  bg: React.CSSProperties['backgroundColor'];
-  color: React.CSSProperties['color'];
-}
-
-type colors = {
-  [Property in colorNames]: colorType;
-};
-
-const colors: colors = {
+const colors: ColorsObject = {
   dark: {
     bg: 'hsl(0, 0%, 16%)',
     color: 'var(--light-text)',
@@ -33,28 +22,14 @@ const icons = {
   trash: <BiTrash />,
 };
 
-type icons = keyof typeof icons;
+export const NotificationContext = createContext<Context | null>(null);
 
-const Context = createContext<null | setNotify>(null);
+const useNotify = () => {
+  const context = useContext(NotificationContext);
+  return context;
+};
 
-interface Notify {
-  message: string;
-  color: colorNames;
-  icon: icons;
-  key: number;
-}
-
-interface setNotify {
-  (options?: { message?: string; color?: colorNames; icon?: icons }): void;
-}
-
-interface options {
-  message: string;
-  color: colorNames;
-  icon: icons;
-}
-
-const NotificationProvider: React.FC = ({ children }) => {
+export const NotificationProvider: React.FC = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [currentNotify, setCurrentNotify] = useState<undefined | Notify>(
     undefined,
@@ -73,8 +48,8 @@ const NotificationProvider: React.FC = ({ children }) => {
     }
   }, [open, currentNotify, displayNotify]);
 
-  const setNotify: setNotify = (options): void => {
-    const defOptions: options = {
+  const value: Context = (options): void => {
+    const defOptions: Required<Options> = {
       ...{ message: '', color: 'dark', icon: 'check' },
       ...options,
     };
@@ -121,15 +96,37 @@ const NotificationProvider: React.FC = ({ children }) => {
           style={style}
         />
       </StyledSnackbar>
-      <Context.Provider value={setNotify}>{children}</Context.Provider>
+      <NotificationContext.Provider value={value}>
+        {children}
+      </NotificationContext.Provider>
     </>
   );
 };
 
-const useNotify = () => {
-  const context = useContext(Context);
-  return context;
+interface ColorType {
+  bg: React.CSSProperties['backgroundColor'];
+  color: React.CSSProperties['color'];
+}
+
+type ColorsObject = {
+  [P in Colors]: ColorType;
 };
 
-export { NotificationProvider };
+export type Colors = 'dark' | 'error';
+
+export type Icons = keyof typeof icons;
+
+interface Notify {
+  message: string;
+  color: Colors;
+  icon: Icons;
+  key: number;
+}
+
+interface Context {
+  (options?: Options): void;
+}
+
+export type Options = Partial<Pick<Notify, 'message' | 'color' | 'icon'>>;
+
 export default useNotify;

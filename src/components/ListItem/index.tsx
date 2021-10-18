@@ -1,4 +1,4 @@
-import type { Note } from 'types';
+import type { Note } from 'components/NotesProvider';
 import {
   NoteLI,
   NoteTitle,
@@ -8,12 +8,8 @@ import {
   StyledButtonBase,
 } from './ListItemElements';
 
-interface ListItem {
-  note: Note;
-}
-
-const ListItem: React.FC<ListItem> = ({ note }) => {
-  const { title, text, id, time } = note;
+const ListItem: React.FC<Props> = ({ note }) => {
+  const { title, text, id, date } = note;
 
   return (
     <NoteLI component="li" item>
@@ -30,12 +26,16 @@ const ListItem: React.FC<ListItem> = ({ note }) => {
             noWrap
             color="textSecondary"
           >
-            {time}
+            {date}
           </NoteTime>
         </StyledCard>
       </StyledButtonBase>
     </NoteLI>
   );
 };
+
+export interface Props {
+  note: Note;
+}
 
 export default ListItem;

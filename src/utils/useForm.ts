@@ -1,23 +1,8 @@
 import { useState } from 'react';
 
-interface initValues {
-  [key: string]: string;
-}
-
-type useForm = <T extends initValues>(
-  initValues: T,
-) => {
-  values: T;
-  handleChange: handleChange;
-};
-
-type handleChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-) => void;
-
-const useForm: useForm = (initValues) => {
+const useForm = <T extends InitValues>(initValues: T) => {
   const [values, setValues] = useState(initValues);
-  const handleChange: handleChange = (e) => {
+  const handleChange: HandleChange = (e) => {
     setValues((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -25,5 +10,13 @@ const useForm: useForm = (initValues) => {
   };
   return { values, handleChange };
 };
+
+interface InitValues {
+  [key: string]: string;
+}
+
+interface HandleChange {
+  (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void;
+}
 
 export default useForm;

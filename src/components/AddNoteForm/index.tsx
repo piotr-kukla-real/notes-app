@@ -5,7 +5,7 @@ const titleMaxLength: number = 50;
 const noteMaxLength: number = 1000;
 
 const AddNoteForm: React.FC = () => {
-  const { values, handleChange } = useForm({ title: '', note: '' });
+  const { values, handleChange } = useForm({ title: '', text: '' });
 
   return (
     <StyledForm>
@@ -20,11 +20,11 @@ const AddNoteForm: React.FC = () => {
         label="note"
         multiline
         rows="8"
-        name="note"
-        value={values.note}
+        name="text"
+        value={values.text}
         onChange={handleChange}
         inputProps={{ maxLength: noteMaxLength }}
-        helperText={`${values.note.length}/${noteMaxLength}`}
+        helperText={`${values.text.length}/${noteMaxLength}`}
       />
       <SubmitBtn variant="outlined" type="submit">
         Add note

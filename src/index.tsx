@@ -6,6 +6,7 @@ import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import muiTheme from 'utils/muiTheme';
 import GlobalStyle from 'style';
 import { NotificationProvider } from 'components/NotificationProvider';
+import { NotesProvider } from 'components/NotesProvider';
 
 const root = document.getElementById('root');
 
@@ -14,8 +15,10 @@ ReactDOM.render(
     <MuiThemeProvider theme={muiTheme}>
       <SCThemeProvider theme={muiTheme}>
         <NotificationProvider>
-          <GlobalStyle />
-          <App />
+          <NotesProvider>
+            <GlobalStyle />
+            <App />
+          </NotesProvider>
         </NotificationProvider>
       </SCThemeProvider>
     </MuiThemeProvider>
