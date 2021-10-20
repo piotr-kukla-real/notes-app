@@ -6,12 +6,14 @@ import {
   StyledDialog,
 } from './AddNoteDialogElements';
 
-const AddNoteDialog: React.FC<Props> = ({ open, setOpen }) => {
+const AddNoteDialog: React.FC<Props> = ({ open }) => {
   const handleClose: HandleClose = (e, reason) => {
-    if (reason === 'backdropClick') {
+    const { pathname } = window.location;
+
+    if (reason === 'backdropClick' || pathname === '/') {
       return;
     }
-    setOpen(false);
+    window.history.back();
   };
 
   return (
@@ -28,7 +30,6 @@ const AddNoteDialog: React.FC<Props> = ({ open, setOpen }) => {
 
 export interface Props {
   open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 type HandleClose = (
