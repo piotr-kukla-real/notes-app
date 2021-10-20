@@ -7,7 +7,7 @@ const reducer = (notes: Notes, action: Action): Notes => {
       const { title, text } = action.payload;
       const id = Date.now();
       const date = format(id, 'dd/MM/yyyy, HH:mm');
-      return [...notes, { title, text, id, date }];
+      return [{ title, text, id, date }, ...notes];
     }
     case 'REMOVE':
       return notes.filter((note) => note.id !== action.payload);

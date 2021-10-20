@@ -8,7 +8,10 @@ const useForm = <T extends InitValues>(initValues: T) => {
       [e.target.name]: e.target.value,
     }));
   };
-  return { values, handleChange };
+
+  const reset = () => setValues(initValues);
+
+  return { values, handleChange, reset };
 };
 
 interface InitValues {

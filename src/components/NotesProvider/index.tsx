@@ -40,10 +40,9 @@ export const NotesProvider: React.FC = ({ children }) => {
 
   const refs = useRef({
     firstRender: true,
-    maxPage: 1,
   });
 
-  refs.current.maxPage = Math.ceil(filteredNotes.length / notesPerPage) || 1;
+  const maxPage = Math.ceil(filteredNotes.length / notesPerPage) || 1;
 
   const start = currentPage * notesPerPage - notesPerPage;
   const end = start + notesPerPage;
@@ -63,12 +62,14 @@ export const NotesProvider: React.FC = ({ children }) => {
     const { type } = options;
 
     switch (type) {
-      case 'ADD' || 'REMOVE': {
+      case 'ADD': {
         const { payload } = options;
-        dispatch({
-          type,
-          payload,
-        });
+        dispatch({ type, payload });
+        break;
+      }
+      case 'REMOVE': {
+        const { payload } = options;
+        dispatch({ type, payload });
         break;
       }
       case 'SEARCH': {
@@ -77,23 +78,9 @@ export const NotesProvider: React.FC = ({ children }) => {
         setCurrentPage(1);
         break;
       }
-      case 'NEXT_PAGE': {
-        setCurrentPage((prev) => {
-          if (prev === refs.current.maxPage) {
-            return prev;
-          }
-          return prev + 1;
-        });
-        break;
-      }
-      case 'PREVIOUS_PAGE': {
-        setCurrentPage((prev) => {
-          if (prev === 1) {
-            return 1;
-          }
-          return prev - 1;
-        });
-        break;
+      case 'CURRENT_PAGE': {
+        const { payload } = options;
+        setCurrentPage(payload);
       }
     }
   }, []);
@@ -102,9 +89,8 @@ export const NotesProvider: React.FC = ({ children }) => {
     notes: slicedNotes,
     setNotes,
     info: {
-      firstPage: currentPage === 1,
-      lastPage: refs.current.maxPage === currentPage,
-      maxPage: refs.current.maxPage,
+      currentPage,
+      maxPage,
     },
   };
 
@@ -127,8 +113,7 @@ interface Context {
 }
 
 interface Info {
-  firstPage: boolean;
-  lastPage: boolean;
+  currentPage: number;
   maxPage: number;
 }
 
@@ -136,11 +121,12 @@ interface SetNotes {
   (options: Add): void;
   (options: Remove): void;
   (options: Search): void;
-  (options: NextPrevPage): void;
+  (options: CurrentPage): void;
 }
 
-interface NextPrevPage {
-  type: 'NEXT_PAGE' | 'PREVIOUS_PAGE';
+interface CurrentPage {
+  type: 'CURRENT_PAGE';
+  payload: number;
 }
 
 interface Search {
